@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Question1 {
+
+    public static ArrayList<Integer> findPrime(ArrayList<Integer> myNum){
+        
+        int n=22;
+        ArrayList <Integer> list = new ArrayList<Integer>();
+        
+        for (int j=2; j<=n; j++){
+            list.add(j);
+        }
+        
+        int currentIndex=-1;
+        
+        while (currentIndex<list.size()-1){
+            //moves to next index of list
+            currentIndex++;
+            int p= list.get(currentIndex);
+            
+            for (int i=currentIndex+1; i<list.size(); i++){
+                
+                if (list.get(i)%p==0){
+                    list.remove(i);
+                    i--;
+                }
+            }
+        }
+        
+        return list;
+    }
+    
+    
+    public static void main (String[] args) {
+        ArrayList<Integer> nums=new ArrayList<Integer>();
+        int cap=0;
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("What number do you want?");
+        cap=sc.nextInt();
+        
+        for (int k=0; k<cap; k++){
+            nums.add(k);
+        }
+        nums=findPrime(nums);
+        
+        System.out.println(nums);
+    }
+}

@@ -1,0 +1,56 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Question3 {
+
+    public static void main (String[] args) {
+        //1. declare variables
+        Scanner sc = new Scanner(System.in);
+        
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        ArrayList<Integer> num1= new ArrayList<Integer>();
+        ArrayList<Integer> num2= new ArrayList<Integer>();
+        
+        num1.add(9);
+        num1.add(8);
+        num1.add(4);
+        num1.add(5);
+        
+        num2.add(8);
+        num2.add(9);
+        num2.add(5);
+        num2.add(5);
+        //create ArrayList
+        ArrayList<Integer> bigSum= new ArrayList<Integer>();
+        
+        //making arrays the same size
+        while (num1.size() <num2.size()) num1.add(0,0);
+        while (num2.size() < num1.size()) num2.add(0,0);
+        
+        //adding each digit
+        for (int i=0; i<num1.size(); i++){
+            int n1=num1.get(i);
+            int n2=num2.get(i);
+            bigSum.add(n1+n2);
+        }
+        
+        
+        //carrying
+        int size= bigSum.size();
+        for (int i=size-1; i>=0; i--){
+            int nums=bigSum.get(i);
+            if (nums>=10){
+                bigSum.set(i, nums-10);
+                if (i!=0){
+                    bigSum.set(i-1, bigSum.get(i-1)+ 1);
+                }
+                else {
+                   bigSum.add(0,1); 
+                }
+            }
+        }
+        
+        System.out.println(bigSum);
+    }
+   
+}

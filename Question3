@@ -2,35 +2,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class Question3 {
-
-    public static void main (String[] args) {
-        //1. declare variables
-        Scanner sc = new Scanner(System.in);
-        
-        ArrayList<Integer> ans = new ArrayList<Integer>();
-        ArrayList<Integer> num1= new ArrayList<Integer>();
-        ArrayList<Integer> num2= new ArrayList<Integer>();
-        
-        num1.add(9);
-        num1.add(8);
-        num1.add(4);
-        num1.add(5);
-        
-        num2.add(8);
-        num2.add(9);
-        num2.add(5);
-        num2.add(5);
-        //create ArrayList
+    public static ArrayList<Integer> addBigInts(ArrayList<Integer> bigInt1, ArrayList<Integer>bigInt2){
+       //create ArrayList
         ArrayList<Integer> bigSum= new ArrayList<Integer>();
         
         //making arrays the same size
-        while (num1.size() <num2.size()) num1.add(0,0);
-        while (num2.size() < num1.size()) num2.add(0,0);
+        while (bigInt1.size() <bigInt2.size()) bigInt1.add(0,0);
+        while (bigInt2.size() < bigInt1.size()) bigInt2.add(0,0);
         
         //adding each digit
-        for (int i=0; i<num1.size(); i++){
-            int n1=num1.get(i);
-            int n2=num2.get(i);
+        for (int i=0; i<bigInt1.size(); i++){
+            int n1=bigInt1.get(i);
+            int n2=bigInt2.get(i);
             bigSum.add(n1+n2);
         }
         
@@ -50,7 +33,31 @@ class Question3 {
             }
         }
         
-        System.out.println(bigSum);
+        return bigSum; 
     }
-   
+    
+    public static void main (String[] args) {
+        //1. declare variables
+        Scanner sc = new Scanner(System.in);
+        
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        ArrayList<Integer> num1= new ArrayList<Integer>();
+        ArrayList<Integer> num2= new ArrayList<Integer>();
+        
+        num1.add(9);
+        num1.add(8);
+        num1.add(4);
+        num1.add(5);
+        
+        num2.add(8);
+        num2.add(9);
+        num2.add(5);
+        num2.add(5);
+        
+        ans = addBigInts(num1,num2);
+        
+        System.out.println(ans);
+    }
+    
+    
 }
